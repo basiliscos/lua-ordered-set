@@ -2,7 +2,6 @@
 
 require 'Test.More'
 local OrderedSet = require "OrderedSet"
-local inspect = require('inspect')
 
 local get_list = function(set)
   local l = {}
