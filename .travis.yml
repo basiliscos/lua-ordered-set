@@ -1,7 +1,7 @@
 language: lua
 
 install:
-  - sudo apt-get install luarocks
+  - sudo apt-get -y install luarocks
   - luarocks install --local lua-testmore
 
 script: ./test.sh
