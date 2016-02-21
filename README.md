@@ -27,6 +27,12 @@ end
 
 ```
 
+Installation
+============
+
+```luarocks install OrderedScope```
+
+
 # License
 
 Artistic License 2.0
