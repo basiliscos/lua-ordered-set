@@ -15,6 +15,12 @@ subtest("test using letters", function()
   local s = OrderedSet.new({"a", "b", "c"})
   is_deeply(get_list(s), {"a", "b", "c",}, "initially created list")
 
+  local reversed = {}
+  for idx, item in s:pairs(true) do
+    table.insert(reversed, item)
+  end
+  is_deeply(reversed, {"c", "b", "a"}, "got items via reverse iterator")
+
   s:insert("d");
   is_deeply(get_list(s), {"a", "b", "c", "d"}, "indirect insertion at tail")
 

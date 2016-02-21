@@ -116,14 +116,26 @@ function OrderedSet:remove(item)
   self.node_for[item] = nil
 end
 
-function OrderedSet:pairs()
-  local i = 0
-  local node = self.head
+function OrderedSet:pairs(reverse)
+  local i, node, next_prop, step
+
+  if (not reverse) then
+    step = 1
+    i = 0
+    node = self.head
+    next_prop = '_next'
+  else
+    step = -1
+    i = self.capacity
+    node = self.tail
+    next_prop = '_prev'
+  end
+
   local iterator = function(state, value) -- ignored
     if (node) then
-      i = i + 1
+      i = i + step
       local item = node._item
-      node = node._next
+      node = node[next_prop]
       return i, item
     end
   end
