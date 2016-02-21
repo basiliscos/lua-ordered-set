@@ -21,9 +21,16 @@ set:insert("d")
 set:insert("bb", 2) -- slow
 set:remove("a")
 
+-- traverse elements in the order as they were added
 for index, element in set:pairs() do
   print(index .. ": " .. element)
 end
+
+-- traverse elements in the reverse order
+for index, element in set:pairs(true) do
+  print(index .. ": " .. element)
+end
+
 
 ```
 
