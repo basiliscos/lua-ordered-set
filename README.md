@@ -1,6 +1,9 @@
 # lua-ordered-set
 Ordered set implementation in lua
 
+[![Build Status](https://travis-ci.org/basiliscos/lua-ordered-set.png)](https://travis-ci.org/basiliscos/lua-ordered-set)
+
+
 1. It is not allowed to add duplicate into set
 2. The order of element is pre-served
 2. Adding element to **head** or **tail** is `O(1)` fast 
@@ -23,3 +26,7 @@ for index, element in set:pairs() do
 end
 
 ```
+
+# License
+
+Artistic License 2.0
