@@ -40,14 +40,20 @@ end
 
 
 function OrderedSet:insert(item, index)
-  assert(not self.node_for[item], string.format('Set already contains "%s" key', item))
+  if (self.node_for[item]) then
+    error(string.format('Set already contains "%s" key', tostring(item)))
+  end
 
   local prev
   if (not index) then
     prev = self.tail
   else
-    assert(index <= self.capacity + 1, "index " .. index .. " can't be greater than " .. self.capacity + 1)
-    assert(index >= 1, "index " .. index .. " can't be used (shoudl be > 1)")
+    if (index > self.capacity + 1) then
+      error("index " .. index .. " can't be greater than " .. self.capacity + 1)
+    end
+    if (index < 1) then
+      error("index " .. index .. " can't be used (shoudl be > 1)")
+    end
     prev = (index == self.capacity + 1)
           and self.tail
           or (index == 1)
@@ -86,8 +92,10 @@ function OrderedSet:insert(item, index)
 end
 
 function OrderedSet:remove(item)
-  assert(self.capacity > 0, string.format("Set is empty, cannot remove %s", item))
-  local node = assert(self.node_for[item], string.format('Set does not contain "%s" key, cannot remove it', item))
+  local node = self.node_for[item]
+  if (not node) then
+    error(string.format('Set does not contain "%s" key, cannot remove it', tostring(item)))
+  end
 
   local _prev = node._prev
   local _next = node._next
