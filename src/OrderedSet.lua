@@ -109,7 +109,7 @@ function OrderedSet:remove(item)
   if (_next) then
     _next._prev = _prev
   else
-    self._tail = _prev
+    self.tail = _prev
   end
 
   self.capacity = self.capacity - 1
