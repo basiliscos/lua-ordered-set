@@ -18,8 +18,7 @@ function OrderedSet.new(items)
   }
   setmetatable(o, OrderedSet)
   if (items) then
-    local prev = o.head
-    for idx, item in pairs(items) do
+    for _, item in pairs(items) do
       o:insert(item)
     end
   end
@@ -131,7 +130,7 @@ function OrderedSet:pairs(reverse)
     next_prop = '_prev'
   end
 
-  local iterator = function(state, value) -- ignored
+  local iterator = function() -- ignored
     if (node) then
       i = i + step
       local item = node._item
